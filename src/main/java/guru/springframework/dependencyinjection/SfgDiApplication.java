@@ -9,16 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class DependencyInjectionApplication {
+public class SfgDiApplication {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = SpringApplication.run(DependencyInjectionApplication.class, args);
+        ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
         MyController myController = (MyController) ctx.getBean("myController");
 
-        String greeting = myController.helloWorld();
-
-        System.out.println(greeting);
+        System.out.println("------- Primary Bean ----------");
+        System.out.println(myController.sayHello());
 
         System.out.println("----- Property ------");
 
@@ -40,5 +39,8 @@ public class DependencyInjectionApplication {
 
         System.out.println(constructorInjectedController.getGreeting());
     }
+
+    //todo How Primary and Qualifier can work together and controlling how classes get
+    // injected into your Spring managed components
 
 }
